@@ -6,7 +6,7 @@ export default function Form({ onSucces , captchaRef}: any) {
   return (
     <form>
       <HCaptcha
-        sitekey="1ca4924c-a484-446e-be12-ec9a7d4a5182"
+        sitekey="234c3ffe-0a3c-4d0c-bb60-22d4a35a96bc"
         size="invisible"
         ref={captchaRef}
 
