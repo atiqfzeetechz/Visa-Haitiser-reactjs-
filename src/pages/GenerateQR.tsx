@@ -42,7 +42,8 @@ export default function GenerateQR() {
       info: template?.dynamicData?.info,
       processNumber: '',
       profileImage: '',
-      logoImage: template.dynamicData?.logoImage || ''
+      logoImage: template.dynamicData?.logoImage || '',
+      verificationCode: ''
     };
     setFormData(emptyData);
   };
@@ -110,6 +111,12 @@ export default function GenerateQR() {
       { key: 'verificationCode', label: 'Code', required: true }
     ];
 
+    // Check if profile image is required
+    if (!formData.profileImage) {
+      showToast("error", "Profile image is required");
+      return;
+    }
+
     for (const field of fields) {
       if (field.required && (!formData[field.key] || formData[field.key].trim() === '')) {
         showToast("error", `${field.label} is required`);
@@ -175,7 +182,7 @@ export default function GenerateQR() {
         {/* Profile Image Upload */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Profile Image
+            Profile Image *
           </label>
           <div className="flex items-center gap-4">
             <div className="relative">

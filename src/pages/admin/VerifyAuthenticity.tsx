@@ -85,6 +85,19 @@ const VerifyAuthenticity = () => {
 
   useEffect(() => {
     if (queryKey) {
+      // Set dynamic title for key-based verification
+      document.title = "Verificar Autenticidade - SCI SISTEMA CONSULAR INTEGRADO";
+      
+      const metaTitle = document.querySelector('meta[property="og:title"]');
+      if (metaTitle) {
+        metaTitle.setAttribute('content', 'Verificar Autenticidade - SCI SISTEMA CONSULAR INTEGRADO');
+      }
+      
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', 'Verificar Autenticidade - SCI SISTEMA CONSULAR INTEGRADO');
+      }
+      
       setShowCaptcha(true);
       const getData = async () => {
         const fullUrl = `${API_BASE_URL}/admin/qr/get/qrdata?token=${queryKey}`;
@@ -165,6 +178,31 @@ const VerifyAuthenticity = () => {
   console.log(languageOpen, selectedLanguage, selectedFlag);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Set dynamic title for this page
+  useEffect(() => {
+    document.title = "Verificar Autenticidade - SCI-Sistema Consular Integrado";
+    
+    const metaTitle = document.querySelector('meta[property="og:title"]');
+    if (metaTitle) {
+      metaTitle.setAttribute('content', 'Verificar Autenticidade - SCI-Sistema Consular Integrado');
+    }
+    
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', 'Verificar Autenticidade -SCI-Sistema Consular Integrado');
+    }
+    
+    return () => {
+      document.title = "SCI-Sistema Consular Integrado";
+      if (metaTitle) {
+        metaTitle.setAttribute('content', 'SCI-Sistema Consular IntegradoO');
+      }
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', 'SCI-Sistema Consular Integrado');
+      }
+    };
+  }, []);
 
 
   const handleLanguageSelect = (

@@ -39,6 +39,12 @@ const TemplateAsImage: React.FC<TemplateAsImageProps> = ({ data, showSaveButton 
   }
 
   const saveTemplate = async () => {
+    // Check if logo image is required
+    if (!data.logoImage) {
+      alert('Logo image is required to save the template!');
+      return;
+    }
+
     const { value: templateName } = await showInputDialog(
       'Save Template',
       'Template Name',

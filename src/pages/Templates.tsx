@@ -49,6 +49,12 @@ const TemplateBuilder = () => {
       const res = await get('/image/get/logos');
       if (res.success) {
         setLogos(res.data);
+        // Set first logo as default
+        if (res.data && res.data.length > 0) {
+          const defaultLogo = res.data[0];
+          setSelectedLogo(defaultLogo);
+          setData(prev => ({ ...prev, logoImage: imageurl(defaultLogo.url || defaultLogo.data) }));
+        }
       }
     })()
   }, []);
@@ -168,8 +174,23 @@ const TemplateBuilder = () => {
           <h3 style={{ color: "#0066CC", marginBottom: "20px" }}>Visa Template Fields</h3>
 
           <div style={{ display: "grid", gap: "8px" }}>
-            {/* Logo Selection */}
+            {/* Current Logo Display */}
             <div style={{ backgroundColor: "white", padding: "15px", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
+              <h4 style={{ color: "#333", marginBottom: "10px", fontSize: "14px" }}>Current Logo</h4>
+              {selectedLogo && (
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <img
+                    src={imageurl(selectedLogo.url || selectedLogo.data)}
+                    alt={selectedLogo.name}
+                    style={{ width: "60px", height: "60px", objectFit: "cover", border: "1px solid #ddd", borderRadius: "4px" }}
+                  />
+                  {/* <p style={{ fontSize: "12px", color: "#666", margin: 0 }}>Using: {selectedLogo.name}</p> */}
+                </div>
+              )}
+            </div>
+
+            {/* Logo Selection - COMMENTED OUT */}
+            {/* <div style={{ backgroundColor: "white", padding: "15px", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
               <h4 style={{ color: "#333", marginBottom: "10px", fontSize: "14px" }}>Select Logo</h4>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(60px, 1fr))", gap: "8px", maxHeight: "120px", overflowY: "auto" }}>
                 {logos.map((logo: any) => (
@@ -199,7 +220,7 @@ const TemplateBuilder = () => {
               {selectedLogo && (
                 <p style={{ fontSize: "12px", color: "#666", marginTop: "8px" }}>Selected: {selectedLogo.name}</p>
               )}
-            </div>
+            </div> */}
 
             {/* Basic Information */}
             <div className="tempalteinputCards" style={{ backgroundColor: "white", padding: "15px", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }} >
