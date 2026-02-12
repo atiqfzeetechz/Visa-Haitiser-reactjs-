@@ -14,6 +14,8 @@ import TemplateAsImage from '../components/TemplateAsImage';
 export default function QRHistory() {
   const { get, put, delete: deleteRequest } = useAxios()
   const [allQrCodes, setAllQrCodes] = useState<any[]>([])
+  const [filteredQrCodes, setFilteredQrCodes] = useState<any[]>([])
+  const [searchTerm, setSearchTerm] = useState('')
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showQRModal, setShowQRModal] = useState(false);
@@ -25,9 +27,27 @@ export default function QRHistory() {
       const res = await get('/admin/qr/getAll')
       if (res.success) {
         setAllQrCodes(res.data)
+        setFilteredQrCodes(res.data)
       }
     })()
   }, [])
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      setFilteredQrCodes(allQrCodes);
+      return;
+    }
+
+    const filtered = allQrCodes.filter((item: any) => {
+      const fullName = item.data?.fullName?.toLowerCase() || '';
+      const documentNumber = item.data?.documentNumber?.toLowerCase() || '';
+      const search = searchTerm.toLowerCase();
+      
+      return fullName.includes(search) || documentNumber.includes(search);
+    });
+
+    setFilteredQrCodes(filtered);
+  }, [searchTerm, allQrCodes]);
+
   console.log(selectedQRItem)
 
   const parseQRData = (dataString: string) => {
@@ -108,14 +128,24 @@ export default function QRHistory() {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="mb-6">
+          <input
+            type="text"
+            placeholder="Search by name or document number..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-offset-0 focus:border-transparent outline-none"
+          />
+        </div>
+
         <div className="space-y-4">
-          {allQrCodes.length === 0 ? (
+          {filteredQrCodes.length === 0 ? (
             <div className="text-center py-12">
               <History size={64} className="mx-auto mb-4 text-gray-400" />
               <p className="text-gray-600">No QR code history found</p>
             </div>
           ) : (
-            allQrCodes.map((item: any) => {
+            filteredQrCodes.map((item: any) => {
               const parsedData = parseQRData(item.data);
               return (
                 <div key={item._id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
