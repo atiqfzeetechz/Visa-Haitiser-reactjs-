@@ -1,9 +1,9 @@
 :root {
   --logoHeight: 70px;
-  --mainHeadercolor: #2F2B5F;
-  --mainsubHeadercolor: #25438A;
-  --infoheadcolor: #1A308E;
-  --samllheadercolor: #03357cf2;
+  --mainHeadercolor: #292A40;
+  --mainsubHeadercolor: #292A40;
+  --infoheadcolor: #292A40;
+  --samllheadercolor: #292A40;
   /* --samllheadercolor: #064aa8; */
   --underimagelogo: 50px
 }
@@ -178,16 +178,17 @@
 
 .eachrow .infoheader {
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--infoheadcolor);
   line-height: 15px;
 
 }
 
 .eachrow .infosmallheader {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--samllheadercolor);
   margin-top: 3.5px;
+  margin-bottom: 1px;
   /* border: 1px solid blue; */
 }
 

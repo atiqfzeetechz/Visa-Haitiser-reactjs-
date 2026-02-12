@@ -91,7 +91,7 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
             </div>
             <div className="belowimage">
               {logoImage ? (
-                <img
+                <img  
                   className="iamgelogounderimage"
                   src={imageurl(logoImage)}
                   alt="Logo"
