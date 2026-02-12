@@ -60,6 +60,7 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
     info = "RESIDÊNCIA PRÉVIA - PORTARIAS INTERMINISTERIAIS MJSP/MRE Nº 38/2023 E 55/2025. PROCESSO Nº: 08228.030381/2024-67. CHAMANTE: MARC NORMIL. REGISTRO JUNTO À POLÍCIA FEDERAL DENTRO DE 90 (NOVENTA) DIAS DA PRIMEIRA ENTRADA NO PAÍS."
 
   } = data
+
   return (
     <div className="document-container">
       <div className="document">
