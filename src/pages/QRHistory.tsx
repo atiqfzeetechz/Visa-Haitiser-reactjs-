@@ -20,7 +20,7 @@ export default function QRHistory() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [showQRModal, setShowQRModal] = useState(false);
   const [selectedQRItem, setSelectedQRItem] = useState<any>(null);
-  
+
 
   useEffect(() => {
     (async () => {
@@ -41,12 +41,24 @@ export default function QRHistory() {
       const fullName = item.data?.fullName?.toLowerCase() || '';
       const documentNumber = item.data?.documentNumber?.toLowerCase() || '';
       const search = searchTerm.toLowerCase();
-      
+
       return fullName.includes(search) || documentNumber.includes(search);
     });
 
     setFilteredQrCodes(filtered);
   }, [searchTerm, allQrCodes]);
+
+  const checkIsPdf = async (token) => {
+    try {
+      const res = await get(`/admin/qr/getPdf/${token}`);
+      console.log(res)
+      if (res.success) {
+        openPdfInNewTab(res.data.pdfUrl)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   console.log(selectedQRItem)
 
@@ -94,7 +106,7 @@ export default function QRHistory() {
   };
 
   const handleDeleteQR = async (item: any) => {
-    const {isConfirmed} = await showConfirm(
+    const { isConfirmed } = await showConfirm(
       'Delete QR Code',
       'Are you sure you want to delete this QR code? This action cannot be undone.',
       'Delete',
@@ -196,7 +208,7 @@ export default function QRHistory() {
                         <Eye size={18} />
                       </button>
                       <button
-                        onClick={() => openPdfInNewTab(item?.pdfUrl)}
+                        onClick={() => checkIsPdf(item?.token)}
                         className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="View Template"
                       >
@@ -261,8 +273,8 @@ function TemplateViewModal({ item, onClose }: { item: any, onClose: () => void }
         }
         console.log(parsedData)
         parsedData = { ...parsedData, profileImage: item.data.userImage }
-         const _url = createQrUrl(item?.token)
-         console.log(_url)
+        const _url = createQrUrl(item?.token)
+        console.log(_url)
         parsedData.qrCode = _url
         setQrUrl(_url)
         setVisaData(parsedData.data || parsedData);
