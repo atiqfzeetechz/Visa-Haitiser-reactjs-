@@ -1,9 +1,10 @@
 :root {
   --logoHeight: 70px;
-  --mainHeadercolor: #292A40;
-  --mainsubHeadercolor: #292A40;
-  --infoheadcolor: #292A40;
-  --samllheadercolor: #292A40;
+  --mainHeadercolor: #24345C;
+  --mainsubHeadercolor: #24345C;
+  --infoheadcolor: #24345C;
+  --samllheadercolor: #24345C;
+  
   /* --samllheadercolor: #064aa8; */
   --underimagelogo: 50px
 }
@@ -195,6 +196,7 @@
 .eachrow .infosmallabel {
   margin-top: -6px;
   font-size: 13px;
+  color: #111111;
   /* border-bottom: 1px solid red ; */
 }
 
