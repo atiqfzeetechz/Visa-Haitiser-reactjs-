@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState } from 'react';
-import { History, QrCode, Download, Eye, ToggleLeft, ToggleRight, Scan, Trash2 } from 'lucide-react';
+import { History, QrCode, Download, Eye, ToggleLeft, ToggleRight, Scan, Trash2, DownloadCloud } from 'lucide-react';
 import { theme } from '../theme';
 import { useAxios } from '../hooks/useAxios';
 import { QRModal } from '../components/QRModal';
@@ -8,7 +8,7 @@ import { encodeData } from '../helper/encodeDecode';
 import { APPURL } from '../utils/config';
 import VisaTemplate from '../components/VisaTemplate';
 import { showToast, showConfirm } from '../utils/sweetAlert';
-import { createQrUrl, imageurl } from '../helper/urlChanger';
+import { createQrUrl, imageurl, openPdfInNewTab } from '../helper/urlChanger';
 import TemplateAsImage from '../components/TemplateAsImage';
 
 export default function QRHistory() {
@@ -194,6 +194,14 @@ export default function QRHistory() {
                         title="View Template"
                       >
                         <Eye size={18} />
+                      </button>
+                      <button
+                        onClick={() => openPdfInNewTab(item?.pdfUrl)}
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        title="View Template"
+                      >
+                        <DownloadCloud size={18} />
+
                       </button>
                       <button
                         onClick={() => handleDeleteQR(item)}

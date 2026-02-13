@@ -10,13 +10,14 @@ import { theme } from "../theme";
 // import { APPURL } from "../utils/config";
 
 import { useAxios } from "../hooks/useAxios";
-import { createQrUrl, imageurl } from "../helper/urlChanger";
+import { createQrUrl, imageurl, openPdfInNewTab } from "../helper/urlChanger";
 
 export default function GenerateQR() {
   const [selectedTemplate, setSelectedTemplate] = useState<any>(null);
   const [formData, setFormData] = useState<any>({});
   const [isActive, setIsActive] = useState(true);
   const { post } = useAxios()
+  const [QrData, setQrData] = useState<any>(null);
 
 
   const { ref, generate, download } = useQRCode(defaultQROptions);
@@ -52,6 +53,12 @@ export default function GenerateQR() {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    // Check file size (2MB = 2 * 1024 * 1024 bytes)
+    if (file.size > 2 * 1024 * 1024) {
+      showToast("error", "Image size must be less than 2MB");
+      return;
+    }
+
     const imagePayload = new FormData()
     imagePayload.append('image', file)
     const userImages = await post('/image/uploaduserImage', imagePayload, {
@@ -68,15 +75,6 @@ export default function GenerateQR() {
     }
     console.log(userImages)
     return
-    // const reader = new FileReader();
-    // reader.onloadend = () => {
-    //   setFormData((prev: any) => ({
-    //     ...prev,
-    //     profileImage: reader.result as string
-    //   }));
-    //   showToast("success", "Profile image uploaded");
-    // };
-    // reader.readAsDataURL(file);
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -136,6 +134,7 @@ export default function GenerateQR() {
     })
 
     if (res.success) {
+      setQrData(res?.qr)
       // const optiondata = {
       //   _id: res.qr._id,
       //   tempalateId: res.qr.data.templateId,
@@ -335,14 +334,27 @@ export default function GenerateQR() {
                 <QrCode size={18} />
                 Generate QR Code
               </button>
+              {
+                QrData && <>
+                  <button
+                    onClick={handleDownload}
+                    className="w-full px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-900 flex items-center justify-center gap-2"
+                  >
+                    <Download size={18} />
+                    Download QR
+                  </button>
+                  <button
+                    onClick={() => {
+                      openPdfInNewTab(QrData?.pdfUrl)
+                    }}
+                    className="w-full px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-900 flex items-center justify-center gap-2"
+                  >
+                    <Download size={18} />
+                    Download PDF
+                  </button>
+                </>
+              }
 
-              <button
-                onClick={handleDownload}
-                className="w-full px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-900 flex items-center justify-center gap-2"
-              >
-                <Download size={18} />
-                Download QR
-              </button>
             </div>
           </div>
 

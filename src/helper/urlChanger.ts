@@ -18,3 +18,9 @@ export const imageurl = (img: string) => {
 export const createQrUrl = (token:string)=>{
 return `${APPURL}?key=${token}`
 }
+
+
+export const openPdfInNewTab = (pdfUrl: string) => {
+  const fullUrl = `${IMAGE_BASE_URL}${pdfUrl}`;
+  window.open(fullUrl, '_blank');
+}
