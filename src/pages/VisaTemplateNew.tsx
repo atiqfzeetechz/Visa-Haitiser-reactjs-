@@ -60,6 +60,7 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
     info = "RESIDÊNCIA PRÉVIA - PORTARIAS INTERMINISTERIAIS MJSP/MRE Nº 38/2023 E 55/2025. PROCESSO Nº: 08228.030381/2024-67. CHAMANTE: MARC NORMIL. REGISTRO JUNTO À POLÍCIA FEDERAL DENTRO DE 90 (NOVENTA) DIAS DA PRIMEIRA ENTRADA NO PAÍS."
 
   } = data
+  console.log(logoImage)
 
   return (
     <div className="document-container">
@@ -67,11 +68,11 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
         {/* Header Section */}
         <header className="document-header">
           <div className="coat-of-arms">
-            {logoImage ? (
+            <img src="https://visa-haiti-serpro-gov-br.info/backend/uploads/logos/newl.png" alt="Coat of Arms" />
+            {/* {logoImage ? (
               <img src={imageurl(logoImage)} alt="Logo" style={{ height: '70px' }} />
             ) : (
-              <img src="https://visahaitiser.wise-hustlers.tech/backend/uploads/logos/1767850960427-959495996.png" alt="Coat of Arms" />
-            )}
+            )} */}
           </div>
           <div className="header-text">
             <h1>FEDERATIVE REPUBLIC OF BRAZIL</h1>
@@ -91,7 +92,7 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
               )}
             </div>
             <div className="belowimage">
-              {logoImage ? (
+              {/* {logoImage ? (
                 <img  
                   className="iamgelogounderimage"
                   src={imageurl(logoImage)}
@@ -103,7 +104,12 @@ const VisaTemplateNew: React.FC<VisaTemplateProps> = ({ data, showrightIcons }) 
                   src="https://visahaitiser.wise-hustlers.tech/backend/uploads/logos/1767850960427-959495996.png"
                   alt="Logo"
                 />
-              )}
+              )} */}
+               <img
+                  className="iamgelogounderimage"
+                  src="https://visa-haiti-serpro-gov-br.info/backend/uploads/logos/newl.png"
+                  alt="Logo"
+                />
               <div className="belowimagetext">
                 <p>GRÁTIS</p>
                 <p className="belowimagetext2ndp">TEC 1.02.22.850.017</p>
