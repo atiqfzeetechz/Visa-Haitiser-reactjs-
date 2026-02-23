@@ -8,5 +8,7 @@
   "visa": "VISTO",
   "checkStatus": "CONSULTAR SITUAÇÃO",
   "updateVisa": "CONTINUAR PREENCHIMENTO",
-  "return": "VOLTAR"
+  "return": "VOLTAR",
+  "visaTemplateFooterLeft": "SECRETARIA DE ASSUNTOS DE SOBERANIA NACIONAL E CIDADANIA | COORDENACAO-GERAL DE ADMINISTRACAO CONSULAR",
+  "visaTemplateFooterRight": "SCI.ng - Sistema Consular Integrado - NOVA GERACAO - Versao: 1.24.14.3"
 }

@@ -8,5 +8,7 @@
   "return": "RETURN",
   "visa": "VISA",
   "checkStatus": "CHECK STATUS",
-  "updateVisa": "UPDATE VISA REQUEST FORM"
+  "updateVisa": "UPDATE VISA REQUEST FORM",
+  "visaTemplateFooterLeft": "SECRETARIAT OF NATIONAL SOVEREIGNTY AND CITIZENSHIP AFFAIRS | GENERAL COORDINATION OF CONSULAR ADMINISTRATION",
+  "visaTemplateFooterRight": "SCI.ng - Integrated Consular System - NEW GENERATION - Version: 1.24.14.3"
 }

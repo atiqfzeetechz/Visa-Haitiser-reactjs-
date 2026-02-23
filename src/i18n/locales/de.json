@@ -1,12 +1,14 @@
-{
-  "ministry": "Ministerium für Auswärtige Angelegenheiten",
-  "authenticity": "ECHTHEIT ÜBERPRÜFEN",
+﻿{
+  "ministry": "Ministerium fÃ¼r AuswÃ¤rtige Angelegenheiten",
+  "authenticity": "ECHTHEIT ÃœBERPRÃœFEN",
   "recoveryData": "SICHERUNGSZUGANGSDATEN",
   "applicationNumber": "Protokoll",
   "code": "Code",
-  "verify": "ECHTHEIT ÜBERPRÜFEN",
-  "return": "ZURÜCK",
+  "verify": "ECHTHEIT ÃœBERPRÃœFEN",
+  "return": "ZURÃœCK",
   "visa": "VISUM",
   "checkStatus": "ANTRAGSSTATUS ABFRAGEN",
-  "updateVisa": "ANTRAG WEITERBEARBEITEN"
+  "updateVisa": "ANTRAG WEITERBEARBEITEN",
+  "visaTemplateFooterLeft": "SEKRETARIAT FUR ANGELEGENHEITEN DER NATIONALEN SOUVERANITAT UND STAATSBURGERSCHAFT | GENERALKOORDINATION DER KONSULARVERWALTUNG",
+  "visaTemplateFooterRight": "SCI.ng - Integriertes Konsularsystem - NEUE GENERATION - Version: 1.24.14.3"
 }

@@ -661,6 +661,10 @@ const VerifyAuthenticity = () => {
           </>
         )}
 
+        <div className="verify-page-footer-strip">
+          <span className="verify-page-footer-left">{t("visaTemplateFooterLeft")}</span>
+          <span className="verify-page-footer-right">{t("visaTemplateFooterRight")}</span>
+        </div>
 
       </div>
     </>
