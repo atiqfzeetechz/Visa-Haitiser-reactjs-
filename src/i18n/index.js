@@ -39,7 +39,7 @@ const footerTranslations = {
   },
   es: {
     left: "Secretaria de Assuntos de Soberania Nacional e Cidadania | Coordenação-geral de Administração Consular",
-    right: "SCI.ng - Sistema Consular Integrado - NUEVA GENERACION - Version: 1.24.14.3",
+    right: "SCI.ng - Sistema Consular Integrado • NOVA GERAÇÃO - Versão: 1.24.14.3",
   },
 };
 
