@@ -1074,11 +1074,14 @@
 
 .verify-page-footer-left {
   flex: 1;
+  font-size: 7.2px;
+  font-weight: 400;
 }
 
 .verify-page-footer-right {
   white-space: nowrap;
-  font-size: 9px;
+  font-size: 7.2px;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {
