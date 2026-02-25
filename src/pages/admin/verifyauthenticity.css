@@ -1101,3 +1101,12 @@
     white-space: normal;
   }
 }
+
+@media (max-width:500px) {
+  .verify-page-footer-left{
+font-size: 5.8px;
+  }
+  .verify-page-footer-right {
+font-size: 5.8px;
+  }
+}
